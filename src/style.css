@@ -1,0 +1,7 @@
+body { margin: 0; overflow: hidden; font-family: system-ui, sans-serif; }
+#controles { position: fixed; bottom: 20px; left: 20px; right: 20px;
+  display: flex; gap: 12px; align-items: center;
+  background: #fff; padding: 10px 16px; border-radius: 8px; }
+#slider { flex: 1; }
+#tarjeta { position: fixed; background: #fff; padding: 10px 14px;
+  border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.2); font-size: 14px; }
