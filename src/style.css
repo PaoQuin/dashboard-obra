@@ -1,7 +1,32 @@
-body { margin: 0; overflow: hidden; font-family: system-ui, sans-serif; }
+body { margin: 0; overflow: hidden; font-family: system-ui, sans-serif; color: #1f2933; }
+
+#titulo { position: fixed; top: 20px; left: 24px; pointer-events: none; }
+#titulo h1 { margin: 0; font-size: 22px; font-weight: 700; }
+#titulo p { margin: 4px 0 0; font-size: 13px; color: #52606d; }
+
+#leyenda { position: fixed; top: 24px; right: 24px; display: flex; gap: 14px;
+  background: rgba(255,255,255,.85); padding: 8px 14px; border-radius: 999px;
+  font-size: 13px; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+#leyenda i { display: inline-block; width: 10px; height: 10px; border-radius: 3px;
+  margin-right: 6px; vertical-align: -1px; }
+
 #controles { position: fixed; bottom: 20px; left: 20px; right: 20px;
-  display: flex; gap: 12px; align-items: center;
-  background: #fff; padding: 10px 16px; border-radius: 8px; }
-#slider { flex: 1; }
-#tarjeta { position: fixed; background: #fff; padding: 10px 14px;
-  border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.2); font-size: 14px; }
+  display: flex; gap: 14px; align-items: center;
+  background: rgba(255,255,255,.9); padding: 12px 18px; border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,.12); backdrop-filter: blur(6px); }
+#slider { flex: 1; accent-color: #c8102e; }
+#fecha { font-variant-numeric: tabular-nums; font-weight: 600; min-width: 90px; }
+#modo { border: 0; border-radius: 999px; padding: 8px 16px; cursor: pointer;
+  background: #1f2933; color: #fff; font: inherit; font-size: 13px; font-weight: 600; }
+#modo:hover { background: #c8102e; }
+
+#tarjeta { position: fixed; background: #fff; padding: 12px 16px; line-height: 1.5;
+  border-radius: 12px; box-shadow: 0 6px 24px rgba(0,0,0,.18); font-size: 14px; }
+
+/* Vista "obra terminada" de noche */
+body.noche #titulo h1 { color: #fff; }
+body.noche #titulo p { color: #aab4be; }
+body.noche #controles { background: rgba(30,34,40,.85); color: #fff; }
+body.noche #modo { background: #c8102e; }
+body.noche #modo:hover { background: #fff; color: #1f2933; }
+#leyenda[hidden] { display: none; }

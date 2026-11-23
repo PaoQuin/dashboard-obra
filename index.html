@@ -2,9 +2,19 @@
 <html lang="es">
 <head><meta charset="UTF-8" /><title>Dashboard de avance de obra</title></head>
 <body>
+  <header id="titulo">
+    <h1>Recepción GAC y Taller Ducati</h1>
+    <p>Avance de obra · 29/09/2023 – 30/04/2024</p>
+  </header>
+  <div id="leyenda">
+    <span><i style="background:#d62828"></i>Sobrecosto</span>
+    <span><i style="background:#f77f00"></i>Atraso</span>
+    <span><i style="background:#9aa5b1"></i>En orden</span>
+  </div>
   <div id="controles">
     <input type="range" id="slider" />
     <span id="fecha"></span>
+    <button id="modo">Ver obra terminada</button>
   </div>
   <div id="tarjeta" hidden></div>
   <script type="module" src="/src/main.js"></script>
