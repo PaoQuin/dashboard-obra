@@ -1,7 +1,55 @@
-body { margin: 0; overflow: hidden; font-family: system-ui, sans-serif; }
-#controles { position: fixed; bottom: 20px; left: 20px; right: 20px;
-  display: flex; gap: 12px; align-items: center;
-  background: #fff; padding: 10px 16px; border-radius: 8px; }
-#slider { flex: 1; }
-#tarjeta { position: fixed; background: #fff; padding: 10px 14px;
-  border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.2); font-size: 14px; }
+:root {
+  --fondo: #0e141b;
+  --panel: rgba(20, 28, 38, 0.86);
+  --borde: rgba(255, 255, 255, 0.08);
+  --texto: #e8edf2;
+  --suave: #93a1b0;
+  --acento: #4da3ff;
+  --rojo: #d62828;
+  --naranja: #f77f00;
+  --gris: #9aa5b1;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; overflow: hidden; background: var(--fondo); color: var(--texto);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+}
+.panel {
+  position: fixed; background: var(--panel); border: 1px solid var(--borde);
+  border-radius: 12px; backdrop-filter: blur(6px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.etiqueta { margin: 0; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--acento); }
+.nombre { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--suave); }
+
+#encabezado { top: 20px; left: 20px; padding: 14px 18px; max-width: 460px; }
+#encabezado h1 { margin: 4px 0 4px; font-size: 22px; font-weight: 600; }
+#encabezado .sub { margin: 0; font-size: 13px; color: var(--suave); line-height: 1.4; }
+
+#resumen { top: 20px; right: 20px; padding: 14px 18px; display: grid; grid-template-columns: repeat(2, minmax(120px, auto)); gap: 12px 24px; }
+.dato { display: flex; flex-direction: column; gap: 2px; }
+.valor { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.valor.malo { color: #ff6b6b; }
+.valor.bueno { color: #4cd38a; }
+
+#leyenda { left: 20px; bottom: 132px; padding: 12px 16px; font-size: 13px; display: flex; flex-direction: column; gap: 6px; }
+.punto { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 8px; vertical-align: -1px; }
+.rojo { background: var(--rojo); } .naranja { background: var(--naranja); } .gris { background: var(--gris); }
+.ayuda { margin: 4px 0 0; font-size: 12px; color: var(--suave); max-width: 230px; }
+
+#controles { left: 20px; right: 20px; bottom: 20px; padding: 12px 20px 10px; }
+.fila-fecha { display: flex; justify-content: space-between; align-items: baseline; }
+#fecha { font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+#slider { width: 100%; margin: 10px 0 4px; accent-color: var(--acento); cursor: pointer; }
+.extremos { display: flex; justify-content: space-between; font-size: 12px; color: var(--suave); }
+
+#tarjeta { padding: 12px 16px; font-size: 13px; line-height: 1.6; max-width: 320px; pointer-events: none; }
+#tarjeta b { font-size: 14px; }
+#tarjeta .codigo { color: var(--suave); font-size: 12px; }
+
+@media (max-width: 700px) {
+  #encabezado { right: 20px; max-width: none; }
+  #encabezado h1 { font-size: 18px; }
+  #resumen { top: auto; bottom: 120px; left: 20px; right: 20px; grid-template-columns: repeat(2, 1fr); gap: 8px 16px; }
+  .valor { font-size: 15px; }
+  #leyenda { display: none; }
+}

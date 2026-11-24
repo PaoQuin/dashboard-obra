@@ -2,7 +2,7 @@ const DIA = 86_400_000;
 const aDia = (fecha, origen) =>
   Math.round((Date.parse(fecha) - Date.parse(origen)) / DIA);
 
-export function configurarSlider(datos, mallas) {
+export function configurarSlider(datos, mallas, alCambiarFecha) {
   const origen = datos.map((e) => e.fecha_inicio).sort()[0];
   const ultimo = datos.map((e) => e.fecha_fin_real ?? e.fecha_fin).sort().at(-1);
   const slider = document.querySelector('#slider');
@@ -10,6 +10,8 @@ export function configurarSlider(datos, mallas) {
   slider.min = 0;
   slider.max = aDia(ultimo, origen);
   slider.value = 0;
+  document.querySelector('#fecha-min').textContent = origen;
+  document.querySelector('#fecha-max').textContent = ultimo;
 
   const actualizar = () => {
     const dia = Number(slider.value);
@@ -22,8 +24,9 @@ export function configurarSlider(datos, mallas) {
       const maxima = e.opacidad_max ?? 1; // cubierta y fachada semitransparentes para ver la estructura
       m.material.opacity = (0.3 + 0.7 * avance) * maxima;
     }
-    etiqueta.textContent = new Date(Date.parse(origen) + dia * DIA)
-      .toISOString().slice(0, 10);
+    const fecha = new Date(Date.parse(origen) + dia * DIA).toISOString().slice(0, 10);
+    etiqueta.textContent = fecha;
+    if (alCambiarFecha) alCambiarFecha(fecha);
   };
 
   slider.addEventListener('input', actualizar);

@@ -1,12 +1,41 @@
 <!doctype html>
 <html lang="es">
-<head><meta charset="UTF-8" /><title>Dashboard de avance de obra</title></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avance de obra · Recepción GAC</title>
+</head>
 <body>
-  <div id="controles">
-    <input type="range" id="slider" />
-    <span id="fecha"></span>
-  </div>
-  <div id="tarjeta" hidden></div>
+  <header id="encabezado" class="panel">
+    <p class="etiqueta">Dashboard de avance de obra 4D / 5D</p>
+    <h1>Recepción de Vehículos GAC</h1>
+    <p class="sub">Estructura de H°A° y metálica · Santa Cruz, 2023-2024 · Fiscal: Ing. María René Villagomez</p>
+  </header>
+
+  <section id="resumen" class="panel">
+    <div class="dato"><span class="nombre">Presupuestado</span><span id="kpi-plan" class="valor">-</span></div>
+    <div class="dato"><span class="nombre">Real</span><span id="kpi-real" class="valor">-</span></div>
+    <div class="dato"><span class="nombre">Desviación</span><span id="kpi-desv" class="valor">-</span></div>
+    <div class="dato"><span class="nombre">Ítems iniciados</span><span id="kpi-items" class="valor">-</span></div>
+  </section>
+
+  <section id="leyenda" class="panel">
+    <div><i class="punto rojo"></i>Sobrecosto</div>
+    <div><i class="punto naranja"></i>Terminó tarde</div>
+    <div><i class="punto gris"></i>En orden</div>
+    <p class="ayuda">Arrastra para girar · rueda para acercar · clic en una pieza para ver su reporte</p>
+  </section>
+
+  <footer id="controles" class="panel">
+    <div class="fila-fecha">
+      <span class="nombre">Fecha de obra</span>
+      <span id="fecha"></span>
+    </div>
+    <input type="range" id="slider" aria-label="Fecha de obra" />
+    <div class="extremos"><span id="fecha-min"></span><span id="fecha-max"></span></div>
+  </footer>
+
+  <div id="tarjeta" class="panel" hidden></div>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
