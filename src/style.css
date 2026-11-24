@@ -1,13 +1,28 @@
 :root {
-  --fondo: #0e141b;
-  --panel: rgba(20, 28, 38, 0.86);
-  --borde: rgba(255, 255, 255, 0.08);
-  --texto: #e8edf2;
-  --suave: #93a1b0;
-  --acento: #4da3ff;
+  /* Tema claro (vista de costos), basado en el diseño de Ali */
+  --fondo: #dfe6ee;
+  --panel: rgba(255, 255, 255, 0.9);
+  --borde: rgba(31, 41, 51, 0.08);
+  --texto: #1f2933;
+  --suave: #52606d;
+  --acento: #c8102e;
   --rojo: #d62828;
   --naranja: #f77f00;
   --gris: #9aa5b1;
+  --bueno: #1b8a4b;
+  --malo: #c62828;
+  --sombra: 0 4px 18px rgba(0, 0, 0, 0.12);
+}
+/* Vista "obra terminada" de noche (Ali) */
+body.noche {
+  --fondo: #15181d;
+  --panel: rgba(30, 34, 40, 0.85);
+  --borde: rgba(255, 255, 255, 0.08);
+  --texto: #e8edf2;
+  --suave: #aab4be;
+  --bueno: #4cd38a;
+  --malo: #ff6b6b;
+  --sombra: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 * { box-sizing: border-box; }
 body {
@@ -16,9 +31,9 @@ body {
 }
 .panel {
   position: fixed; background: var(--panel); border: 1px solid var(--borde);
-  border-radius: 12px; backdrop-filter: blur(6px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  border-radius: 12px; backdrop-filter: blur(6px); box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
 }
-.etiqueta { margin: 0; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--acento); }
+.etiqueta { margin: 0; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--acento); font-weight: 600; }
 .nombre { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--suave); }
 
 #encabezado { top: 20px; left: 20px; padding: 14px 18px; max-width: 460px; }
@@ -28,8 +43,8 @@ body {
 #resumen { top: 20px; right: 20px; padding: 14px 18px; display: grid; grid-template-columns: repeat(2, minmax(120px, auto)); gap: 12px 24px; }
 .dato { display: flex; flex-direction: column; gap: 2px; }
 .valor { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
-.valor.malo { color: #ff6b6b; }
-.valor.bueno { color: #4cd38a; }
+.valor.malo { color: var(--malo); }
+.valor.bueno { color: var(--bueno); }
 
 #leyenda { left: 20px; bottom: 132px; padding: 12px 16px; font-size: 13px; display: flex; flex-direction: column; gap: 6px; }
 .punto { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 8px; vertical-align: -1px; }
@@ -39,6 +54,18 @@ body {
 #controles { left: 20px; right: 20px; bottom: 20px; padding: 12px 20px 10px; }
 .fila-fecha { display: flex; justify-content: space-between; align-items: baseline; }
 #fecha { font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.derecha { display: flex; align-items: center; gap: 14px; }
+#modo { border: 0; border-radius: 999px; padding: 8px 16px; cursor: pointer;
+  background: #1f2933; color: #fff; font: inherit; font-size: 13px; font-weight: 600; }
+#modo:hover { background: #c8102e; }
+#leyenda[hidden] { display: none; }
+/* Vista "obra terminada" de noche (Ali) */
+body.noche {
+  --fondo: #15181d; --panel: rgba(30, 34, 40, 0.85); --borde: rgba(255, 255, 255, 0.08);
+  --texto: #f1f4f7; --suave: #aab4be; --acento: #ff4d5e; --malo: #ff6b6b; --bueno: #4cd38a;
+}
+body.noche #modo { background: #c8102e; }
+body.noche #modo:hover { background: #fff; color: #1f2933; }
 #slider { width: 100%; margin: 10px 0 4px; accent-color: var(--acento); cursor: pointer; }
 .extremos { display: flex; justify-content: space-between; font-size: 12px; color: var(--suave); }
 

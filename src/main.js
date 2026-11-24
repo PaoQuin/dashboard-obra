@@ -4,27 +4,33 @@ import { crearEdificio } from './edificio.js';
 import { configurarSlider } from './tiempo.js';
 import { activarClick } from './interaccion.js';
 import { actualizarPanel } from './panel.js';
+import { configurarApariencia } from './apariencia.js';
 import './style.css';
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x0e141b);
+scene.background = new THREE.Color(0xdfe6ee);
+scene.fog = new THREE.Fog(0xdfe6ee, 40, 90);
 
 const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.1, 200);
 camera.position.set(28, 18, -14);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 renderer.setSize(innerWidth, innerHeight);
 document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.target.set(5.5, 2.5, 12);
 controls.enableDamping = true;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.6;
+controls.addEventListener('start', () => (controls.autoRotate = false));
 
 scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-const sol = new THREE.DirectionalLight(0xffffff, 1.2);
+const sol = new THREE.DirectionalLight(0xffffff, 1.5);
 sol.position.set(10, 20, 10);
 scene.add(sol);
-const grilla = new THREE.GridHelper(40, 40, 0x3a4a5c, 0x1f2a36);
+const grilla = new THREE.GridHelper(40, 40, 0x9aa5b1, 0xc8d0d8);
 grilla.position.set(5.5, 0, 12);
 scene.add(grilla);
 
@@ -34,6 +40,7 @@ scene.add(grupo);
 
 configurarSlider(elementos, mallas, (fecha) => actualizarPanel(elementos, fecha));
 activarClick(camera, renderer, mallas);
+configurarApariencia(scene, mallas, grilla);
 
 addEventListener('resize', () => {
   camera.aspect = innerWidth / innerHeight;
@@ -45,3 +52,6 @@ renderer.setAnimationLoop(() => {
   controls.update();
   renderer.render(scene, camera);
 });
+
+// Para mostrar las matrices en la consola durante la exposición
+window.camera = camera;
