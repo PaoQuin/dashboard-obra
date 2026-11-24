@@ -1,7 +1,16 @@
-import * as THREE from 'three';
-import { desviacion } from './costos.js';
+// =====================================================================
+// CÓDIGO DEL EQUIPO · Responsable: Rose
+// interfaz.js: el clic sobre las piezas (picking con Raycaster),
+// la tarjeta de datos y el resumen de costos.
+// =====================================================================
 
-export function activarClick(camera, renderer, mallas) {
+// Librería externa: Three.js
+import * as THREE from 'three';
+// Del equipo (Ali): la desviación de costo
+import { desviacion } from './materiales.js';
+
+// --- Picking: clic sobre una pieza con Raycaster ---
+export function activarPicking(camera, renderer, mallas) {
   const raycaster = new THREE.Raycaster();
   const puntero = new THREE.Vector2();
   const tarjeta = document.querySelector('#tarjeta');
@@ -38,4 +47,21 @@ export function activarClick(camera, renderer, mallas) {
     tarjeta.style.top = `${y}px`;
     tarjeta.hidden = false;
   });
+}
+
+// --- Resumen 5D: suma los costos de los ítems que ya empezaron en la fecha ---
+const bsResumen = (n) => `Bs ${Math.round(n).toLocaleString('es-BO')}`;
+
+export function actualizarResumen(elementos, fecha) {
+  const iniciados = elementos.filter((e) => e.fecha_inicio <= fecha);
+  const plan = iniciados.reduce((s, e) => s + e.costo_presupuestado, 0);
+  const real = iniciados.reduce((s, e) => s + e.costo_real, 0);
+  const desv = plan ? (real - plan) / plan : 0;
+
+  document.querySelector('#kpi-plan').textContent = bsResumen(plan);
+  document.querySelector('#kpi-real').textContent = bsResumen(real);
+  const d = document.querySelector('#kpi-desv');
+  d.textContent = `${desv > 0 ? '+' : ''}${(desv * 100).toLocaleString('es-BO', { maximumFractionDigits: 1 })} %`;
+  d.className = 'valor ' + (desv > 0 ? 'malo' : 'bueno');
+  document.querySelector('#kpi-items').textContent = `${iniciados.length} de ${elementos.length}`;
 }

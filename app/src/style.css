@@ -1,3 +1,8 @@
+/* =====================================================================
+   CÓDIGO DEL EQUIPO · Responsable: Rose
+   style.css: el diseño de la interfaz (tema claro y modo noche).
+   ===================================================================== */
+
 :root {
   /* Tema claro (vista de costos), basado en el diseño de Ali */
   --fondo: #dfe6ee;

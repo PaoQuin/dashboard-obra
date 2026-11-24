@@ -1,4 +1,24 @@
-// Dos formas de ver el edificio (idea y colores de Ali):
+// =====================================================================
+// CÓDIGO DEL EQUIPO · Responsable: Ali
+// materiales.js: decide el color de cada ítem según su costo (5D)
+// y maneja el botón de "Ver obra terminada".
+// =====================================================================
+
+// --- Colores por costo ---
+export const desviacion = (e) =>
+  (e.costo_real - e.costo_presupuestado) / e.costo_presupuestado;
+
+export const estaAtrasado = (e) =>
+  Boolean(e.fecha_fin_real) && e.fecha_fin_real > e.fecha_fin;
+
+export function colorPorCosto(e) {
+  if (e.costo_real > e.costo_presupuestado) return 0xd62828; // sobrecosto
+  if (estaAtrasado(e)) return 0xf77f00;                      // atraso
+  return 0x9aa5b1;                                           // en orden
+}
+
+// --- Vista de obra terminada ---
+// Dos formas de ver el edificio:
 // "costos": el color dice si el ítem tuvo sobrecosto, atraso o está en orden.
 // "terminada": colores parecidos a la obra real (estructura gris, fachada roja), de noche.
 const COLOR_TERMINADA = {
@@ -18,7 +38,7 @@ const FONDO = {
   terminada: 0x15181d,
 };
 
-export function configurarApariencia(scene, mallas, grilla) {
+export function configurarVistas(scene, mallas, grilla) {
   const boton = document.querySelector('#modo');
   const leyenda = document.querySelector('#leyenda');
   const slider = document.querySelector('#slider');

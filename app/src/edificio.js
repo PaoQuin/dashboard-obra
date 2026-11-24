@@ -1,5 +1,19 @@
+// =====================================================================
+// CÓDIGO DEL EQUIPO · Responsable: Misael
+// edificio.js: carga los datos de la obra y crea una caja 3D por pieza.
+// =====================================================================
+
+// Librería externa: Three.js
 import * as THREE from 'three';
-import { colorPorCosto } from './costos.js';
+// Del equipo (Ali): el color según el costo
+import { colorPorCosto } from './materiales.js';
+
+// Lee los datos de la obra (public/data/obra.json)
+export async function cargarObra() {
+  const respuesta = await fetch('/data/obra.json');
+  const datos = await respuesta.json();
+  return datos.elementos;
+}
 
 // Cada elemento del JSON es un ítem de la planilla (por ejemplo "Columnas")
 // y puede tener varias piezas 3D. Todas las piezas comparten los datos del ítem.

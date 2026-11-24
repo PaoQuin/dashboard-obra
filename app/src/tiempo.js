@@ -1,3 +1,8 @@
+// =====================================================================
+// CÓDIGO DEL EQUIPO · Responsable: Misael
+// tiempo.js: el slider 4D. Según la fecha, muestra u oculta cada pieza.
+// =====================================================================
+
 const DIA = 86_400_000;
 const aDia = (fecha, origen) =>
   Math.round((Date.parse(fecha) - Date.parse(origen)) / DIA);
