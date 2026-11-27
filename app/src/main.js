@@ -6,7 +6,7 @@
 import { crearEscena, iniciarRender } from './escena.js';       // Ali
 import { configurarVistas } from './materiales.js';             // Ali
 import { cargarObra, crearEdificio } from './edificio.js';      // Misael
-import { configurarSlider } from './tiempo.js';                 // Misael
+import { configurarSlider } from './tiempo.js';                 // Rose
 import { activarPicking, actualizarResumen } from './interfaz.js'; // Rose
 import './style.css';                                           // Rose
 

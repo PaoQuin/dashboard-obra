@@ -28,7 +28,7 @@ export function activarPicking(camera, renderer, mallas) {
     puntero.y = -((ev.clientY - r.top) / r.height) * 2 + 1;
     raycaster.setFromCamera(puntero, camera);
 
-    const hit = raycaster.intersectObjects(mallas).find((h) => h.object.visible);
+    const hit = raycaster.intersectObjects(mallas).find((h) => h.object.visible && !h.object.userData.atenuado); // ignora lo atenuado
     if (!hit) { tarjeta.hidden = true; return; }
 
     const e = hit.object.userData;
