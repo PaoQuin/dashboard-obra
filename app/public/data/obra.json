@@ -1735,6 +1735,156 @@
           }
         }
       ]
+    },
+    {
+      "id_elemento": "Vidrios_PB",
+      "nombre": "Fachada vidriada planta baja (agregado)",
+      "tipo": "vidrio",
+      "item_planilla": "AGREGADO-1",
+      "unidad": "m²",
+      "cantidad_contrato": 78.75,
+      "cantidad_real": 78.75,
+      "precio_unitario": 520.0,
+      "fecha_inicio_plan": "2024-03-15",
+      "fecha_inicio": "2024-03-15",
+      "fecha_fin": "2024-04-12",
+      "fecha_fin_real": "2024-04-12",
+      "costo_presupuestado": 40950.0,
+      "costo_real": 40950.0,
+      "opacidad_max": 0.35,
+      "estado": "en_orden",
+      "piezas": [
+        {
+          "nombre": "Vidrio frente",
+          "posicion": {
+            "x": 5.5,
+            "y": 1.75,
+            "z": -0.6
+          },
+          "dimensiones": {
+            "ancho": 11.0,
+            "alto": 3.5,
+            "largo": 0.05
+          }
+        },
+        {
+          "nombre": "Vidrio lateral",
+          "posicion": {
+            "x": 11.2,
+            "y": 1.75,
+            "z": 6.0
+          },
+          "dimensiones": {
+            "ancho": 0.05,
+            "alto": 3.5,
+            "largo": 11.5
+          }
+        }
+      ]
+    },
+    {
+      "id_elemento": "Muros_cerramiento",
+      "nombre": "Muros de cerramiento (agregado)",
+      "tipo": "muro",
+      "item_planilla": "AGREGADO-2",
+      "unidad": "m²",
+      "cantidad_contrato": 252.0,
+      "cantidad_real": 252.0,
+      "precio_unitario": 180.0,
+      "fecha_inicio_plan": "2024-02-01",
+      "fecha_inicio": "2024-02-01",
+      "fecha_fin": "2024-03-15",
+      "fecha_fin_real": "2024-03-22",
+      "costo_presupuestado": 45360.0,
+      "costo_real": 45360.0,
+      "opacidad_max": 0.6,
+      "estado": "atrasado",
+      "piezas": [
+        {
+          "nombre": "Muro fondo",
+          "posicion": {
+            "x": 5.5,
+            "y": 3.5,
+            "z": 25.3
+          },
+          "dimensiones": {
+            "ancho": 11.0,
+            "alto": 7.0,
+            "largo": 0.15
+          }
+        },
+        {
+          "nombre": "Muro lateral",
+          "posicion": {
+            "x": -0.1,
+            "y": 3.5,
+            "z": 12.3
+          },
+          "dimensiones": {
+            "ancho": 0.15,
+            "alto": 7.0,
+            "largo": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "id_elemento": "Marco_luminoso",
+      "nombre": "Marco luminoso del letrero (agregado)",
+      "tipo": "letrero",
+      "item_planilla": "AGREGADO-3",
+      "unidad": "ml",
+      "cantidad_contrato": 27.0,
+      "cantidad_real": 27.0,
+      "precio_unitario": 650.0,
+      "fecha_inicio_plan": "2024-04-01",
+      "fecha_inicio": "2024-04-01",
+      "fecha_fin": "2024-04-19",
+      "fecha_fin_real": "2024-04-19",
+      "costo_presupuestado": 17550.0,
+      "costo_real": 19300.0,
+      "estado": "sobrecosto",
+      "piezas": [
+        {
+          "nombre": "Marco arriba",
+          "posicion": {
+            "x": 5.5,
+            "y": 8.0,
+            "z": -0.75
+          },
+          "dimensiones": {
+            "ancho": 11.4,
+            "alto": 0.25,
+            "largo": 0.1
+          }
+        },
+        {
+          "nombre": "Marco izquierdo",
+          "posicion": {
+            "x": -0.2,
+            "y": 4.0,
+            "z": -0.75
+          },
+          "dimensiones": {
+            "ancho": 0.25,
+            "alto": 8.0,
+            "largo": 0.1
+          }
+        },
+        {
+          "nombre": "Marco derecho",
+          "posicion": {
+            "x": 11.2,
+            "y": 4.0,
+            "z": -0.75
+          },
+          "dimensiones": {
+            "ancho": 0.25,
+            "alto": 8.0,
+            "largo": 0.1
+          }
+        }
+      ]
     }
   ]
 }
