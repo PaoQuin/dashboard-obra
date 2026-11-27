@@ -64,4 +64,5 @@ export function actualizarResumen(elementos, fecha) {
   d.textContent = `${desv > 0 ? '+' : ''}${(desv * 100).toLocaleString('es-BO', { maximumFractionDigits: 1 })} %`;
   d.className = 'valor ' + (desv > 0 ? 'malo' : 'bueno');
   document.querySelector('#kpi-items').textContent = `${iniciados.length} de ${elementos.length}`;
+  actualizarLista(elementos, fecha);
 }
