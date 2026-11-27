@@ -31,6 +31,10 @@ const COLOR_TERMINADA = {
   cubierta: 0x2f3237,
   muro: 0x3a3d42,
   fachada: 0xc8102e,
+  // tipos nuevos que Misael agrega guiándose por las fotos
+  techo: 0x2f3237,
+  vidrio: 0x8fb8d8,
+  letrero: 0xffffff,
 };
 
 const FONDO = {
@@ -58,7 +62,7 @@ export function configurarVistas(scene, mallas, grilla) {
     for (const [material, { costo, elemento }] of materiales) {
       material.color.setHex(terminada ? COLOR_TERMINADA[elemento.tipo] ?? 0x9ea3a8 : costo);
       // La cenefa de aluminio brilla un poco de noche, como el letrero iluminado.
-      const brilla = terminada && elemento.id_elemento === 'Cenefa_aluminio';
+      const brilla = terminada && (elemento.id_elemento === 'Cenefa_aluminio' || elemento.tipo === 'letrero');
       material.emissive.setHex(brilla ? 0xffffff : 0x000000);
       material.emissiveIntensity = brilla ? 0.6 : 1;
     }

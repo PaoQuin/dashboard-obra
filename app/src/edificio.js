@@ -20,8 +20,17 @@ export async function cargarObra() {
 export function crearEdificio(elementos) {
   const grupo = new THREE.Group();
   const mallas = [];
+  const gruposPorTipo = new Map();
 
   for (const e of elementos) {
+    let grupoTipo = gruposPorTipo.get(e.tipo);
+    if (!grupoTipo) {
+      grupoTipo = new THREE.Group();
+      grupoTipo.name = e.tipo;
+      gruposPorTipo.set(e.tipo, grupoTipo);
+      grupo.add(grupoTipo);
+    }
+
     const grupoItem = new THREE.Group();
     grupoItem.name = e.id_elemento;
     const material = new THREE.MeshStandardMaterial({ color: colorPorCosto(e), transparent: true, opacity: 1 });
@@ -36,7 +45,7 @@ export function crearEdificio(elementos) {
       grupoItem.add(malla);
       mallas.push(malla);
     }
-    grupo.add(grupoItem);
+    grupoTipo.add(grupoItem);
   }
-  return { grupo, mallas };
+  return { grupo, mallas, gruposPorTipo };
 }

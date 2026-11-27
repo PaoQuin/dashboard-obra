@@ -5,6 +5,7 @@
 
 import { crearEscena, iniciarRender } from './escena.js';       // Ali
 import { configurarVistas } from './materiales.js';             // Ali
+import { configurarCapas } from './capas.js';                   // Ali
 import { cargarObra, crearEdificio } from './edificio.js';      // Misael
 import { configurarSlider } from './tiempo.js';                 // Rose
 import { activarPicking, actualizarResumen } from './interfaz.js'; // Rose
@@ -18,7 +19,8 @@ escena.scene.add(grupo);
 configurarSlider(elementos, mallas, (fecha) => actualizarResumen(elementos, fecha)); // 4. tiempo + resumen
 activarPicking(escena.camera, escena.renderer, mallas);                              // 5. clic
 configurarVistas(escena.scene, mallas, escena.grilla);                               // 6. obra terminada
-iniciarRender(escena);                                                               // 7. dibujar
+configurarCapas(mallas);                                                             // 7. encender/apagar partes
+iniciarRender(escena);                                                               // 8. dibujar
 
 // Para mostrar las matrices en la consola durante la exposición
 window.camera = escena.camera;
