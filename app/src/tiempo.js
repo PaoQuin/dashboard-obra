@@ -27,7 +27,8 @@ export function configurarSlider(datos, mallas, alCambiarFecha) {
       m.visible = dia >= ini;
       const avance = Math.min(1, (dia - ini + 1) / (fin - ini + 1));
       const maxima = e.opacidad_max ?? 1; // cubierta y fachada semitransparentes para ver la estructura
-      m.material.opacity = (0.3 + 0.7 * avance) * maxima;
+      const atenuado = e.atenuado ? 0.08 : 1; // "ver solo una parte": lo demás casi invisible
+      m.material.opacity = (0.3 + 0.7 * avance) * maxima * atenuado;
     }
     const fecha = new Date(Date.parse(origen) + dia * DIA).toISOString().slice(0, 10);
     etiqueta.textContent = fecha;
