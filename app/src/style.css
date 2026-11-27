@@ -85,3 +85,27 @@ body.noche #modo:hover { background: #fff; color: #1f2933; }
   .valor { font-size: 15px; }
   #leyenda { display: none; }
 }
+
+/* --- Botón de play (Rose) --- */
+#play { border: 0; border-radius: 999px; padding: 8px 16px; cursor: pointer;
+  background: var(--acento); color: #fff; font: inherit; font-size: 13px; font-weight: 600; }
+#play:hover { filter: brightness(1.1); }
+
+/* --- Lista de avance por ítem (Rose) --- */
+#avance { top: 160px; right: 20px; width: 300px; max-height: calc(100vh - 330px);
+  overflow-y: auto; padding: 12px 14px; }
+#avance .nombre { margin: 0 0 8px; }
+#lista-avance { list-style: none; margin: 0; padding: 0; }
+#lista-avance li { padding: 6px 8px; border-radius: 8px; cursor: pointer; font-size: 13px; }
+#lista-avance li:hover { background: rgba(0, 0, 0, 0.05); }
+#lista-avance li.activo { background: rgba(200, 16, 46, 0.1); }
+.fila-item { display: flex; justify-content: space-between; gap: 8px; }
+.fila-item .pct { font-variant-numeric: tabular-nums; color: var(--suave); white-space: nowrap; }
+.barra { height: 5px; margin-top: 4px; border-radius: 999px; background: rgba(0, 0, 0, 0.08); overflow: hidden; }
+.barra span { display: block; height: 100%; border-radius: 999px; }
+body.noche #lista-avance li:hover { background: rgba(255, 255, 255, 0.08); }
+body.noche .barra { background: rgba(255, 255, 255, 0.12); }
+
+@media (max-width: 700px) {
+  #avance { display: none; }
+}
