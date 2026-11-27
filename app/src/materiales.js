@@ -1,10 +1,7 @@
 // =====================================================================
-// CÓDIGO DEL EQUIPO · Responsable: Ali
-// materiales.js: decide el color de cada ítem según su costo (5D)
-// y maneja el botón de "Ver obra terminada".
+// CÓDIGO DEL EQUIPO · Responsable: María A. Belaunde V.
 // =====================================================================
 
-// --- Colores por costo ---
 export const desviacion = (e) =>
   (e.costo_real - e.costo_presupuestado) / e.costo_presupuestado;
 
@@ -12,15 +9,11 @@ export const estaAtrasado = (e) =>
   Boolean(e.fecha_fin_real) && e.fecha_fin_real > e.fecha_fin;
 
 export function colorPorCosto(e) {
-  if (e.costo_real > e.costo_presupuestado) return 0xd62828; // sobrecosto
-  if (estaAtrasado(e)) return 0xf77f00;                      // atraso
-  return 0x9aa5b1;                                           // en orden
+  if (e.costo_real > e.costo_presupuestado) return 0xd62828;
+  if (estaAtrasado(e)) return 0xf77f00;
+  return 0x9aa5b1;
 }
 
-// --- Vista de obra terminada ---
-// Dos formas de ver el edificio:
-// "costos": el color dice si el ítem tuvo sobrecosto, atraso o está en orden.
-// "terminada": colores parecidos a la obra real (estructura gris, fachada roja), de noche.
 const COLOR_TERMINADA = {
   fundacion: 0x7d8288,
   viga: 0x9ea3a8,
@@ -31,7 +24,6 @@ const COLOR_TERMINADA = {
   cubierta: 0x2f3237,
   muro: 0x3a3d42,
   fachada: 0xc8102e,
-  // tipos nuevos que Misael agrega guiándose por las fotos
   techo: 0x2f3237,
   vidrio: 0x8fb8d8,
   letrero: 0xffffff,
@@ -47,7 +39,6 @@ export function configurarVistas(scene, mallas, grilla) {
   const leyenda = document.querySelector('#leyenda');
   const slider = document.querySelector('#slider');
 
-  // Guardamos el color original (el de costos) de cada material una sola vez.
   const materiales = new Map();
   for (const m of mallas) {
     if (!materiales.has(m.material)) {
@@ -61,7 +52,6 @@ export function configurarVistas(scene, mallas, grilla) {
     const terminada = modo === 'terminada';
     for (const [material, { costo, elemento }] of materiales) {
       material.color.setHex(terminada ? COLOR_TERMINADA[elemento.tipo] ?? 0x9ea3a8 : costo);
-      // La cenefa de aluminio brilla un poco de noche, como el letrero iluminado.
       const brilla = terminada && (elemento.id_elemento === 'Cenefa_aluminio' || elemento.tipo === 'letrero');
       material.emissive.setHex(brilla ? 0xffffff : 0x000000);
       material.emissiveIntensity = brilla ? 0.6 : 1;
@@ -75,7 +65,6 @@ export function configurarVistas(scene, mallas, grilla) {
     leyenda.hidden = terminada;
     boton.textContent = terminada ? 'Ver costos' : 'Ver obra terminada';
 
-    // En la vista terminada mostramos el edificio completo.
     if (terminada) {
       slider.value = slider.max;
       slider.dispatchEvent(new Event('input'));
